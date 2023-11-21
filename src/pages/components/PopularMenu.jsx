@@ -1,6 +1,7 @@
 // import { useState } from "react";
 // import { useEffect } from "react";
-import useMenu from "../../assets/hooks/useMenu";
+
+import useMenu from "../../hooks/useMenu";
 import MenuItem from "../shared/MenuItem";
 import SectionTitle from "./SectionTitle";
 

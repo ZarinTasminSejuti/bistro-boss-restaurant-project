@@ -1,18 +1,21 @@
-import { useState } from "react";
-import { useEffect } from "react";
+// import { useState } from "react";
+// import { useEffect } from "react";
+import useMenu from "../../assets/hooks/useMenu";
 import MenuItem from "../shared/MenuItem";
 import SectionTitle from "./SectionTitle";
 
 const PopularMenu = () => {
-  const [menu, setMenu] = useState([]);
-  useEffect(() => {
-    fetch("menu.json")
-      .then((res) => res.json())
-        .then((data) => {
-          const popularItems = data.filter (item => item.category === "popular")
-        setMenu(popularItems);
-      });
-  }, []);
+  const [menu] = useMenu();
+  const popular = menu.filter(item => item.category === "popular")
+  // const [menu, setMenu] = useState([]);
+  // useEffect(() => {
+  //   fetch("menu.json")
+  //     .then((res) => res.json())
+  //       .then((data) => {
+  //         const popularItems = data.filter (item => item.category === "popular")
+  //       setMenu(popularItems);
+  //     });
+  // }, []);
   return (
     <div className="mb-12">
       <SectionTitle
@@ -23,7 +26,7 @@ const PopularMenu = () => {
 
           <div className="grid md:grid-cols-2 gap-10">
               {
-                  menu.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
+                  popular.map(item => <MenuItem key={item._id} item={item}></MenuItem>)
               }
       </div>
       <div className="text-center mt-8">
